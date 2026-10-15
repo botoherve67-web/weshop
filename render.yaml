@@ -7,6 +7,8 @@ services:
     envVars:
       - key: APP_ENV
         value: production
+      - key: APP_NAME
+        value: WeShop
       - key: APP_DEBUG
         value: "false"
       - key: SESSION_SECURE_COOKIE
@@ -48,7 +50,7 @@ services:
       - key: MAIL_FROM_ADDRESS
         sync: false
       - key: MAIL_FROM_NAME
-        value: HerveShop
+        value: WeShop
       - key: CONTACT_EMAIL
         sync: false
       - key: GOOGLE_TAG_ID

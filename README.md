@@ -1,4 +1,4 @@
-# HerveShop — MVP 1.0
+# WeShop — MVP 1.0
 
 Plateforme e-commerce Laravel (stock + précommandes), Afrique de l'Ouest.
 

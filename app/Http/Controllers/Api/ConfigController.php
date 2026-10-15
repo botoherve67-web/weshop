@@ -14,7 +14,7 @@ class ConfigController extends Controller
     {
         return response()->json([
             'success' => true,
-            'app_name' => 'HerveShop',
+            'app_name' => 'WeShop',
             'version' => '1.0.0',
             'currency' => 'FCFA',
             'contact' => [
@@ -73,13 +73,13 @@ class ConfigController extends Controller
             'pickup_points' => [
                 [
                     'id' => 'p1',
-                    'name' => 'Boutique HerveShop — Lomé Hedzranawoé',
+                    'name' => 'Boutique WeShop — Lomé Hedzranawoé',
                     'address' => 'Face au grand marché Hedzranawoé, Lomé',
                     'hours' => 'Lun - Sam : 08h00 - 19h00',
                 ],
                 [
                     'id' => 'p2',
-                    'name' => 'Point Relais HerveShop — Tokoin Casablanca',
+                    'name' => 'Point Relais WeShop — Tokoin Casablanca',
                     'address' => 'Carrefour Tokoin, Lomé',
                     'hours' => 'Lun - Sam : 09h00 - 18h30',
                 ],

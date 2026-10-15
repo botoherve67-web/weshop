@@ -1,12 +1,10 @@
-const VERSION = 'v3';
+const VERSION = 'v4';
 const STATIC_CACHE = `hervershop-static-${VERSION}`;
 const IMAGE_CACHE = `hervershop-img-${VERSION}`;
 const OFFLINE_URL = '/offline.html';
 const PRECACHE = [
   OFFLINE_URL,
-  '/images/logo.png',
-  '/images/icons/icon-192.png',
-  '/images/icons/icon-512.png',
+  '/images/weshop-logo.png',
 ];
 const IMAGE_LIMIT = 80;
 const NO_CACHE = [

@@ -1,4 +1,4 @@
-@php($logo = resource_path('images/logo.png'))
+@php($logo = public_path('images/weshop-logo.png'))
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,7 +21,7 @@
     <div class="header">
         <table style="margin:0;">
             <tr>
-                <td style="border:0; padding:0;"><div class="brand"><img src="data:image/png;base64,{{ base64_encode(file_get_contents($logo)) }}" alt="HerveShop" style="height:38px;width:auto;vertical-align:middle;margin-right:8px;">HerveShop</div><div class="muted">Facture client</div></td>
+                <td style="border:0; padding:0;"><div class="brand"><img src="data:image/png;base64,{{ base64_encode(file_get_contents($logo)) }}" alt="WeShop" style="height:38px;width:auto;vertical-align:middle;margin-right:8px;">WeShop</div><div class="muted">Facture client</div></td>
                 <td style="border:0; padding:0;" class="right"><strong>Facture</strong><br>{{ $order->reference }}<br>{{ $order->created_at?->format('d/m/Y') }}</td>
             </tr>
         </table>
@@ -46,6 +46,6 @@
         <tr><td>Réduction</td><td class="right">-{{ number_format($order->reduction, 0, ',', ' ') }} FCFA</td></tr>
         <tr><td class="grand-total">Total</td><td class="right grand-total">{{ number_format($order->total, 0, ',', ' ') }} FCFA</td></tr>
     </table>
-    <p class="muted" style="margin-top:40px;">Merci pour votre confiance. HerveShop.</p>
+    <p class="muted" style="margin-top:40px;">Merci pour votre confiance. WeShop.</p>
 </body>
 </html>

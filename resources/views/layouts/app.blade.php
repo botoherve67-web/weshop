@@ -25,33 +25,33 @@
     <meta name="theme-color" content="#17233f">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="HerveShop">
+    <meta name="apple-mobile-web-app-title" content="WeShop">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link rel="apple-touch-icon" href="{{ asset('images/icons/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('images/icons/icon-192.png') }}">
-    <title>@yield('title', 'HerveShop')</title>
-    <meta name="description" content="@yield('meta_description', 'HerveShop, votre boutique en ligne en Afrique de l’Ouest : produits disponibles, précommandes et livraison.')">
+    <link rel="apple-touch-icon" href="{{ asset('images/weshop-logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/weshop-logo.png') }}">
+    <title>@yield('title', 'WeShop')</title>
+    <meta name="description" content="@yield('meta_description', 'WeShop, votre boutique en ligne en Afrique de l’Ouest : produits disponibles, précommandes et livraison.')">
     <meta name="robots" content="@yield('meta_robots', 'index,follow')">
     <link rel="canonical" href="@yield('canonical', url()->current())">
     <meta property="og:type" content="@yield('og_type', 'website')">
-    <meta property="og:title" content="@yield('title', 'HerveShop')">
-    <meta property="og:description" content="@yield('meta_description', 'HerveShop, votre boutique en ligne en Afrique de l’Ouest : produits disponibles, précommandes et livraison.')">
+    <meta property="og:title" content="@yield('title', 'WeShop')">
+    <meta property="og:description" content="@yield('meta_description', 'WeShop, votre boutique en ligne en Afrique de l’Ouest : produits disponibles, précommandes et livraison.')">
     <meta property="og:url" content="@yield('canonical', url()->current())">
-    <meta property="og:site_name" content="HerveShop">
+    <meta property="og:site_name" content="WeShop">
     <meta property="og:locale" content="fr_TG">
-    <meta property="og:image" content="@yield('og_image', asset('images/logo.png'))">
+    <meta property="og:image" content="@yield('og_image', asset('images/weshop-logo.png'))">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('title', 'HerveShop')">
-    <meta name="twitter:description" content="@yield('meta_description', 'HerveShop, votre boutique en ligne en Afrique de l’Ouest : produits disponibles, précommandes et livraison.')">
-    <meta name="twitter:image" content="@yield('og_image', asset('images/logo.png'))">
+    <meta name="twitter:title" content="@yield('title', 'WeShop')">
+    <meta name="twitter:description" content="@yield('meta_description', 'WeShop, votre boutique en ligne en Afrique de l’Ouest : produits disponibles, précommandes et livraison.')">
+    <meta name="twitter:image" content="@yield('og_image', asset('images/weshop-logo.png'))">
     @stack('structured_data')
     @php
         $storeSchema = [
             '@context' => 'https://schema.org',
             '@type' => 'OnlineStore',
-            'name' => 'HerveShop',
+            'name' => 'WeShop',
             'url' => url('/'),
-            'logo' => asset('images/logo.png'),
+            'logo' => asset('images/weshop-logo.png'),
             'areaServed' => [
                 '@type' => 'Country',
                 'name' => 'Togo',
@@ -236,7 +236,7 @@
         .category-hero { position:relative; display:flex; align-items:center; min-height:218px; margin:-40px 0 18px; padding:30px; overflow:hidden; border-radius:8px; background:linear-gradient(105deg,#eef7ff,#dcebfa 58%,#c7e0f4); }.category-hero h1 { margin:8px 0; color:#102e55; font-size:clamp(1.9rem,4vw,3rem); line-height:1.02; }.category-hero h1 strong { color:#0969ed; }.category-hero p { max-width:390px; margin:0; color:#52606d; font-size:.76rem; }.category-hero-products { display:flex; align-items:end; gap:0; width:45%; height:190px; margin-left:auto; }.category-hero-products a { width:25%; height:100%; display:flex; align-items:end; }.category-hero-products img { width:100%; height:95%; object-fit:contain; filter:drop-shadow(0 12px 9px rgba(16,46,85,.16)); }.category-hero-promises { position:absolute; left:30px; bottom:14px; display:flex; gap:20px; color:#173f5f; font-size:.61rem; font-weight:700; }.category-hero-promises span { display:flex; align-items:flex-start; gap:5px; }.category-hero-promises small { display:block; color:#6b7c93; font-weight:400; }.category-page-layout { display:grid; grid-template-columns:212px minmax(0,1fr); gap:22px; }.category-results { min-width:0; }.category-card-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }.category-large-card { overflow:hidden; border:1px solid var(--bordure); border-radius:10px; background:#fff; box-shadow:var(--ombre); transition:transform .2s,box-shadow .2s; }.category-large-card:hover { transform:translateY(-4px); box-shadow:0 18px 32px rgba(16,46,85,.13); }.category-large-image { display:grid; place-items:center; height:145px; color:#0969ed; background:#eaf4ff; }.category-large-image img { width:100%; height:100%; object-fit:contain; mix-blend-mode:multiply; }.category-large-2 .category-large-image,.category-large-5 .category-large-image { background:#fff0f0; }.category-large-3 .category-large-image,.category-large-6 .category-large-image { background:#f0faef; }.category-large-4 .category-large-image,.category-large-7 .category-large-image { background:#fff6e5; }.category-large-info { position:relative; display:flex; flex-direction:column; gap:2px; padding:10px 12px; }.category-large-icon { display:grid; place-items:center; width:28px; height:28px; margin-top:-25px; margin-bottom:4px; border:3px solid #fff; border-radius:50%; color:#fff; background:#0969ed; }.category-large-info strong { color:#173f5f; font-size:.76rem; }.category-large-info small { color:#8393a7; font-size:.64rem; }.category-arrow { position:absolute; right:12px; bottom:12px; display:grid; place-items:center; width:22px; height:22px; border:1px solid #b9d8fa; border-radius:50%; color:#0969ed; font-size:.75rem; }.category-benefits { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-top:20px; padding:15px 22px; border-radius:9px; background:#eef6ff; color:#173f5f; }.category-benefits > div { display:flex; align-items:center; gap:8px; font-size:.68rem; font-weight:700; }.category-benefits > div:first-child { flex-direction:column; align-items:flex-start; gap:0; }.category-benefits svg { color:#0969ed; }.category-benefits small { display:block; color:#8393a7; font-size:.58rem; font-weight:400; }.category-benefits .home-btn { padding:9px 15px; white-space:nowrap; font-size:.68rem; }
         .about-hero { position:relative; display:flex; align-items:center; min-height:265px; margin:-40px 0 20px; padding:32px; overflow:hidden; border-radius:8px; background:linear-gradient(105deg,#eef7ff,#fff 58%,#dceefa); }.about-hero h1 { margin:9px 0; color:#102e55; font-size:clamp(1.9rem,4vw,3rem); line-height:1.04; }.about-hero h1 strong { color:#0969ed; }.about-hero p { max-width:470px; color:#52606d; font-size:.78rem; }.about-hero-products { display:flex; align-items:end; width:47%; height:225px; margin-left:auto; }.about-hero-products a { width:25%; height:100%; display:flex; align-items:end; }.about-hero-products img { width:100%; height:94%; object-fit:contain; filter:drop-shadow(0 12px 9px rgba(16,46,85,.17)); }.about-script { position:absolute; top:28px; right:30px; color:#0969ed; font-family:cursive; font-size:1.4rem; line-height:.88; transform:rotate(-8deg); }.about-story { display:grid; grid-template-columns:225px 1fr 1.15fr; gap:22px; align-items:center; margin:20px 0; }.about-story-image { height:208px; overflow:hidden; border-radius:9px; background:#eef6ff; }.about-story-image img { width:100%; height:100%; object-fit:cover; }.about-story-copy h2,.about-values h2 { margin:4px 0 12px; color:#102e55; font-size:1.3rem; }.about-story-copy p { color:#52606d; font-size:.75rem; line-height:1.65; }.about-story-copy strong,.about-story-copy small { display:block; color:#173f5f; }.about-story-copy small { color:#8393a7; font-size:.65rem; }.about-values { padding:20px; border-radius:10px; background:#eef6ff; }.values-grid { display:grid; grid-template-columns:1fr 1fr; gap:17px; }.values-grid div { display:grid; grid-template-columns:35px 1fr; column-gap:8px; }.values-grid b { grid-row:span 2; display:grid; place-items:center; width:35px; height:35px; border-radius:50%; color:#0969ed; background:#fff; }.values-grid strong { color:#173f5f; font-size:.72rem; }.values-grid small { color:#8393a7; font-size:.62rem; }.about-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:15px; margin:20px 0; padding:18px 24px; border-radius:9px; background:#eef6ff; }.about-stats div { display:grid; grid-template-columns:35px 1fr; column-gap:8px; align-items:center; border-right:1px solid #c9dff5; }.about-stats div:last-child { border:0; }.about-stats svg { grid-row:span 2; color:#0969ed; }.about-stats strong { color:#0969ed; font-size:1.1rem; }.about-stats small { color:#8393a7; font-size:.6rem; }.about-cta { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:16px 25px; border-radius:9px; color:#fff; background:linear-gradient(100deg,#0969ed,#0572ed); }.about-cta > div { display:flex; align-items:center; gap:14px; }.about-cta strong,.about-cta small { display:block; }.about-cta small { margin-top:3px; color:#dceafa; font-size:.68rem; }.about-cta .home-btn-light { color:#0969ed; border:0; }
         .site-footer { margin-top:60px; padding:38px clamp(18px,5vw,64px) 18px; color:#fff; background:#062b52; }
-        .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:30px; max-width:1180px; margin:auto; }.footer-grid h3 { margin:0 0 12px; font-size:.78rem; }.footer-grid a,.footer-grid p { display:block; margin:6px 0; color:#c8d8e8; font-size:.72rem; }.footer-brand img { height:36px; width:auto; background:#fff; border-radius:4px; padding:3px; }.footer-brand p { max-width:220px; line-height:1.6; }.footer-bottom { max-width:1180px; margin:30px auto 0; padding-top:14px; border-top:1px solid rgba(255,255,255,.18); color:#a9bfd4; font-size:.65rem; display:flex; justify-content:space-between; }
+        .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:30px; max-width:1180px; margin:auto; }.footer-grid h3 { margin:0 0 12px; font-size:.78rem; }.footer-grid a,.footer-grid p { display:block; margin:6px 0; color:#c8d8e8; font-size:.72rem; }.footer-brand img { height:56px; width:auto; background:#fff; border-radius:4px; padding:3px; }.footer-brand p { max-width:220px; line-height:1.6; }.footer-bottom { max-width:1180px; margin:30px auto 0; padding-top:14px; border-top:1px solid rgba(255,255,255,.18); color:#a9bfd4; font-size:.65rem; display:flex; justify-content:space-between; }
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
@@ -327,7 +327,7 @@
 
         @media (max-width: 480px) {
             header.site .logo { font-size: 1.15rem; }
-            header.site .logo img { height: 29px !important; margin-right: 5px !important; }
+            header.site .logo img { height: 44px !important; margin-right: 5px !important; }
             .grid { grid-template-columns: 1fr; }
             .category-grid { grid-template-columns:repeat(2,1fr); }.category-tile { padding:12px 6px; }.hero-actions { flex-direction:column; }.home-btn { justify-content:center; }
             h1 { font-size: 1.65rem; }
@@ -367,7 +367,7 @@
                 box-shadow:0 4px 15px rgba(19,31,52,.045);
             }
             header.site .logo { flex:1 1 auto; min-width:0; }
-            header.site .logo img { height:34px !important; }
+            header.site .logo img { height:48px !important; }
             header.site form.search {
                 order:3;
                 flex:1 0 100%;
@@ -766,7 +766,7 @@
         }
         @media (max-width: 480px) {
             header.site { padding-right:12px; padding-left:12px; }
-            header.site .logo img { height:31px !important; }
+            header.site .logo img { height:44px !important; }
             header.site .action-nav { gap:12px; }
             main { padding-right:12px; padding-left:12px; }
             .home-hero { margin-right:-12px; margin-left:-12px; }
@@ -1054,7 +1054,7 @@
         <span><x-icon name="headset" size="14"/> Service client disponible · {{ \App\Models\AppSetting::read('contact_phone', '+228 96 29 20 39') }}</span>
     </div>
     <header class="site">
-        <a class="logo" href="{{ route('home') }}"><img src="{{ asset('images/logo.png') }}" alt="HerveShop" style="height:38px; width:auto;"></a>
+        <a class="logo" href="{{ route('home') }}" aria-label="WeShop - Accueil"><img src="{{ asset('images/weshop-logo.png') }}" alt="WeShop" style="height:56px; width:auto;"></a>
         <form class="search" action="{{ route('products.index') }}" method="GET">
             <input type="text" name="q" placeholder="Rechercher un produit..." value="{{ request('q') }}">
             <button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m15.5 14 4.2 4.2-1.5 1.5-4.2-4.2A7 7 0 1 1 15.5 14ZM10 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/></svg></button>
@@ -1175,19 +1175,19 @@
                     <a href="{{ route('returns') }}">Retours et remboursements</a>
                     <a href="{{ route('terms') }}">Conditions de vente</a>
                     <a href="{{ route('privacy') }}">Confidentialité</a>
-                    <a href="{{ route('about.index') }}">À propos de HerveShop</a>
+                    <a href="{{ route('about.index') }}">À propos de WeShop</a>
                 </div>
             </details>
-            <small>&copy; {{ date('Y') }} HerveShop</small>
+            <small>&copy; {{ date('Y') }} WeShop</small>
         </div>
         <div class="footer-grid">
-            <div class="footer-brand"><img src="{{ asset('images/logo.png') }}" alt="HerveShop"><p>Vos envies, notre priorité. Des produits choisis avec soin au meilleur prix.</p></div>
+            <div class="footer-brand"><img src="{{ asset('images/weshop-logo.png') }}" alt="WeShop"><p>Vos envies, notre priorité. Des produits choisis avec soin au meilleur prix.</p></div>
             <div><h3>Liens utiles</h3><a href="{{ route('home') }}">Accueil</a><a href="{{ route('products.index') }}">Boutique</a><a href="{{ route('categories.index') }}">Catégories</a><a href="{{ route('compare.index') }}">Comparer</a></div>
             <div><h3>Service client</h3><a href="{{ route('delivery') }}">Livraison</a><a href="{{ route('returns') }}">Retours & remboursement</a><a href="{{ route('cart.index') }}">Suivi de commande</a><a href="{{ route('contact.index') }}">Coordonnées et contact</a></div>
             <div><h3>Informations</h3><a href="{{ route('terms') }}">Conditions de vente</a><a href="{{ route('privacy') }}">Confidentialité</a></div>
             <div><h3>Contact</h3><p><x-icon name="headset" size="14"/> {{ \App\Models\AppSetting::read('contact_phone', '+228 96 29 20 39') }}</p><p><x-icon name="mail" size="14"/> {{ \App\Models\AppSetting::read('contact_email') ?: config('mail.contact_address') ?: config('mail.from.address', 'botoherve67@gmail.com') }}</p><p><x-icon name="pin" size="14"/> {{ \App\Models\AppSetting::read('contact_address', 'Lomé, Togo') }}</p><a href="{{ route('contact.index') }}" class="footer-link">Nous écrire</a></div>
         </div>
-        <div class="footer-bottom"><span>&copy; {{ date('Y') }} HerveShop. Tous droits réservés.</span><span>Vos envies, notre priorité — HerveShop</span></div>
+        <div class="footer-bottom"><span>&copy; {{ date('Y') }} WeShop. Tous droits réservés.</span><span>Vos envies, notre priorité — WeShop</span></div>
     </footer>
     <script>
         document.addEventListener('click', function (event) {
@@ -1201,9 +1201,9 @@
             }).catch(() => {});
         });
     </script>
-    <button id="pwa-install" type="button" aria-label="Installer HerveShop" aria-haspopup="dialog" aria-controls="pwa-install-help">Installer l’application</button>
+    <button id="pwa-install" type="button" aria-label="Installer WeShop" aria-haspopup="dialog" aria-controls="pwa-install-help">Installer l’application</button>
     <dialog id="pwa-install-help" aria-labelledby="pwa-install-title">
-        <h2 id="pwa-install-title">Installer HerveShop</h2>
+        <h2 id="pwa-install-title">Installer WeShop</h2>
         <p>Ajoutez la boutique à votre écran d’accueil pour la retrouver facilement.</p>
         <ol>
             <li><strong>Android / Chrome :</strong> ouvrez le menu ⋮ puis choisissez « Installer l’application » ou « Ajouter à l’écran d’accueil ».</li>

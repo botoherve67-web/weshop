@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| HerveShop Mobile API Routes
+| WeShop Mobile API Routes
 |--------------------------------------------------------------------------
 */
 
