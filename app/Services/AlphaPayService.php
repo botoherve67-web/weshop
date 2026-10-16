@@ -26,12 +26,14 @@ class AlphaPayService
                 'metadata' => ['order_reference' => $order->reference],
             ]);
 
-        if (! $response->successful() || ! $response->json('checkout_url')) {
+        $session = $response->json('data', $response->json());
+
+        if (! $response->successful() || ! is_array($session) || empty($session['checkout_url'])) {
             $detail = $response->json('message') ?? $response->json('detail') ?? $response->body();
             throw new RuntimeException('AlphaPay HTTP '. $response->status() . ': '.mb_substr((string) $detail, 0, 500));
         }
-        $order->update(['alphapay_session_id' => $response->json('id')]);
+        $order->update(['alphapay_session_id' => $session['id'] ?? null]);
 
-        return $response->json('checkout_url');
+        return $session['checkout_url'];
     }
 }
