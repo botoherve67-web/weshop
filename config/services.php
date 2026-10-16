@@ -23,7 +23,7 @@ return [
     ],
 
     'alphapay' => [
-        'key' => env('ALPHAPAY_API_KEY'),
+        'key' => env('ALPHAPAY_SECRET_KEY', env('ALPHAPAY_API_KEY')),
         'webhook_secret' => env('ALPHAPAY_WEBHOOK_SECRET'),
     ],
 

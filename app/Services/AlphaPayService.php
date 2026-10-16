@@ -14,9 +14,9 @@ class AlphaPayService
             throw new RuntimeException('Clé AlphaPay absente.');
         }
 
-        $response = Http::acceptJson()->asJson()->withToken($key)->timeout(20)
+        $response = Http::acceptJson()->asJson()->withToken($key)->withHeaders(['Idempotency-Key' => 'order-'.$order->id])->timeout(20)
             ->post('https://api.alphapay.me/api/v1/checkout-sessions/', [
-                'amount' => number_format($order->montant_acompte, 2, '.', ''),
+                'amount' => (int) round((float) $order->montant_acompte),
                 'currency' => 'XOF',
                 'description' => 'Commande '.$order->reference,
                 'country' => 'TG',
