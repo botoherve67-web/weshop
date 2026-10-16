@@ -27,9 +27,9 @@ class AlphaPayService
             ]);
 
         if (! $response->successful() || ! $response->json('checkout_url')) {
-            throw new RuntimeException('Création session AlphaPay impossible.');
+            $detail = $response->json('message') ?? $response->json('detail') ?? $response->body();
+            throw new RuntimeException('AlphaPay HTTP '. $response->status() . ': '.mb_substr((string) $detail, 0, 500));
         }
-
         $order->update(['alphapay_session_id' => $response->json('id')]);
 
         return $response->json('checkout_url');
