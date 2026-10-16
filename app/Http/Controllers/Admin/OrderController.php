@@ -112,6 +112,7 @@ class OrderController extends Controller
             'remarque_admin' => 'required_if:statut_paiement,echec|nullable|string|max:2000',
         ]);
         if (in_array($request->statut_paiement, ['acompte_paye', 'paye'], true)
+            && $order->moyen_paiement !== 'alphapay'
             && (! $order->transaction_id || ! $order->preuve_paiement_path)) {
             throw ValidationException::withMessages([
                 'statut_paiement' => 'Une transaction et une preuve de paiement sont obligatoires pour valider ce paiement.',
