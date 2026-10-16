@@ -26,6 +26,7 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->reportable(function (\Throwable $exception): void {
+            error_log('[Laravel exception] '.get_class($exception).': '.$exception->getMessage().PHP_EOL.$exception->getTraceAsString());
             if ($exception instanceof \Illuminate\Validation\ValidationException) {
                 return;
             }

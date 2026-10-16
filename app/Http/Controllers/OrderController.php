@@ -30,36 +30,49 @@ class OrderController extends Controller
 
     public function checkout()
     {
-        $cart = $this->cleanCart();
-        if (empty($cart)) {
-            return redirect()->route('cart.index');
-        }
-
-        $items = [];
-        $total = 0;
-        $estPrecommande = false;
-
-        foreach ($cart as $productId => $quantity) {
-            $product = Product::find($productId);
-            if (! $product) {
-                continue;
+        try {
+            $cart = $this->cleanCart();
+            if (empty($cart)) {
+                return redirect()->route('cart.index');
             }
-            if ($product->estEnPrecommande()) {
-                $estPrecommande = true;
-            }
-            $lineTotal = $product->price * $quantity;
-            $total += $lineTotal;
-            $items[] = compact('product', 'quantity', 'lineTotal');
-        }
 
-        return view('checkout.index', [
-            'items' => $items,
-            'total' => $total,
-            'estPrecommande' => $estPrecommande,
-            'zones' => $this->fraisParZone,
-        ]);
+            $items = [];
+            $total = 0;
+            $estPrecommande = false;
+
+            foreach ($cart as $productId => $quantity) {
+                $product = Product::find($productId);
+                if (! $product) {
+                    continue;
+                }
+                if ($product->estEnPrecommande()) {
+                    $estPrecommande = true;
+                }
+                $lineTotal = $product->price * $quantity;
+                $total += $lineTotal;
+                $items[] = compact('product', 'quantity', 'lineTotal');
+            }
+
+            if ($items === []) {
+                return redirect()->route('cart.index')->withErrors(['cart' => 'Produits indisponibles. Actualisez votre panier.']);
+            }
+
+            return response(view('checkout.index', [
+                'items' => $items,
+                'total' => $total,
+                'estPrecommande' => $estPrecommande,
+                'zones' => $this->fraisParZone,
+            ])->render());
+        } catch (\Throwable $exception) {
+            Log::error('Affichage commande impossible.', [
+                'user_id' => Auth::id(),
+                'cart' => session('cart', []),
+                'exception' => $exception,
+            ]);
+
+            return redirect()->route('cart.index')->withErrors(['checkout' => 'Chargement commande impossible. Réessayez ou contactez support.']);
+        }
     }
-
     public function store(Request $request)
     {
         $request->validate([

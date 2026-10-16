@@ -11,7 +11,10 @@
         </form>
     </div>
 
-    @forelse($errors as $error)
+    @if($journalFailure)
+        <div class="alert-error">{{ $journalFailure }}</div>
+    @endif
+    @forelse($errorLogs as $error)
         <details class="card" style="margin-bottom:8px;">
             <summary style="cursor:pointer;">
                 <strong>{{ $error->exception_class }}</strong>
@@ -28,5 +31,5 @@
         <div class="card">Aucune erreur enregistrée.</div>
     @endforelse
 
-    {{ $errors->links() }}
+    {{ $errorLogs->links() }}
 @endsection
