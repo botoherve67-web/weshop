@@ -209,9 +209,9 @@ class OrderController extends Controller
             try {
                 return redirect()->away(app(AlphaPayService::class)->createCheckout($order));
             } catch (\Throwable $exception) {
-                Log::error('Session AlphaPay impossible.', ['order_id' => ->id, 'error' => ->getMessage()]);
+                Log::error('Session AlphaPay impossible.', ['order_id' => $order->id, 'error' => $exception->getMessage()]);
 
-                return redirect()->route('orders.show', )->withErrors(['paiement' => 'Paiement en ligne indisponible. Contactez notre équipe.']);
+                return redirect()->route('orders.show', $order)->withErrors(['paiement' => 'Paiement en ligne indisponible. Contactez notre équipe.']);
             }
         }
 
