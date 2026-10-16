@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AlphaPayWebhookController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\AffiliateWithdrawalController;
@@ -36,6 +37,7 @@ Route::get('/categories', [CategoryPageController::class, 'index'])->name('categ
 Route::get('/a-propos', [AboutController::class, 'index'])->name('about.index');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:5,10')->name('contact.store');
+Route::post('/webhooks/alphapay', AlphaPayWebhookController::class)->name('webhooks.alphapay');
 Route::view('/livraison', 'information.delivery')->name('delivery');
 Route::view('/retours-remboursements', 'information.returns')->name('returns');
 Route::view('/confidentialite', 'information.privacy')->name('privacy');

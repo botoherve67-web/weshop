@@ -54,6 +54,7 @@
 
         <label>Moyen de paiement</label>
         <select name="moyen_paiement">
+            <option value="alphapay">AlphaPay — Mobile Money / carte</option>
             <option value="flooz">Flooz (Moov Money)</option>
             <option value="tmoney">TMoney (Togocom)</option>
         </select>

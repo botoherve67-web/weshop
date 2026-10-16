@@ -27,7 +27,7 @@ class Order extends Model
         'frais_livraison', 'adresse_livraison', 'point_retrait',
         'sous_total', 'reduction', 'code_promo', 'total',
         'montant_acompte', 'montant_solde', 'solde_echeance_at',
-        'moyen_paiement', 'transaction_id', 'preuve_paiement_path',
+        'moyen_paiement', 'transaction_id', 'preuve_paiement_path', 'alphapay_session_id',
         'preuve_paiement_envoyee_at', 'statut_paiement', 'statut', 'remarque_admin',
         'affiliate_partner_id', 'courier_id',
     ];

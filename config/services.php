@@ -22,6 +22,11 @@ return [
         'key' => env('RESEND_API_KEY'),
     ],
 
+    'alphapay' => [
+        'key' => env('ALPHAPAY_API_KEY'),
+        'webhook_secret' => env('ALPHAPAY_WEBHOOK_SECRET'),
+    ],
+
     'firebase' => [
         'project_id' => env('FIREBASE_PROJECT_ID'),
     ],

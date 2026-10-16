@@ -7,6 +7,7 @@ use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\PromoCode;
 use App\Models\User;
+use App\Services\AlphaPayService;
 use App\Notifications\AdminOrderNotification;
 use App\Notifications\OrderUpdateNotification;
 use Illuminate\Http\Request;
@@ -66,7 +67,7 @@ class OrderController extends Controller
             'zone_livraison' => 'required_if:mode_livraison,domicile|nullable|string',
             'adresse_livraison' => 'required_if:mode_livraison,domicile|nullable|string',
             'point_retrait' => 'required_if:mode_livraison,point_retrait|nullable|string',
-            'moyen_paiement' => 'required|in:flooz,tmoney',
+            'moyen_paiement' => 'required|in:flooz,tmoney,alphapay',
             'code_promo' => 'nullable|string',
         ]);
 
@@ -190,6 +191,16 @@ class OrderController extends Controller
             ]);
         }
         $this->notifyAdmins($order, 'nouvelle_commande');
+
+        if ($order->moyen_paiement === 'alphapay') {
+            try {
+                return redirect()->away(app(AlphaPayService::class)->createCheckout($order));
+            } catch (\Throwable $exception) {
+                Log::error('Session AlphaPay impossible.', ['order_id' => ->id, 'error' => ->getMessage()]);
+
+                return redirect()->route('orders.show', )->withErrors(['paiement' => 'Paiement en ligne indisponible. Contactez notre équipe.']);
+            }
+        }
 
         return redirect()->route('orders.show', $order)->with('success', 'Commande enregistrée. Confirmez le paiement '.strtoupper($order->moyen_paiement).' pour valider.')->with('order_created', true);
     }

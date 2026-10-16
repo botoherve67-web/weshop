@@ -115,12 +115,19 @@
             <div class="order-panel">
                 <h2>Paiement</h2>
                 <div class="pay-box">
+                    @if($order->moyen_paiement === 'alphapay')
+                        Paiement AlphaPay<br>
+                    @else
                     Flooz : +228 96 29 20 39<br>
                     TMoney : +228 93 84 33 57<br>
+                    @endif
                     Moyen choisi : {{ strtoupper($order->moyen_paiement) }}
                 </div>
 
-                @if($order->preuve_paiement_path)
+                @if($order->moyen_paiement === 'alphapay')
+                    @error('paiement')<p class="alert-error">{{ $message }}</p>@enderror
+                    <p>Confirmation automatique après paiement.</p>
+                @elseif($order->preuve_paiement_path)
                     <p style="font-size:.72rem;">Preuve envoyee le {{ $order->preuve_paiement_envoyee_at?->format('d/m/Y H:i') }}<br>Transaction : <strong>{{ $order->transaction_id }}</strong></p>
                 @else
                     <form action="{{ route('orders.payment-proof', $order) }}" method="POST" enctype="multipart/form-data" class="pay-form">
