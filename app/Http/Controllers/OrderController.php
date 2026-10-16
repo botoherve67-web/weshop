@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
@@ -80,7 +79,7 @@ class OrderController extends Controller
             'zone_livraison' => 'required_if:mode_livraison,domicile|nullable|string',
             'adresse_livraison' => 'required_if:mode_livraison,domicile|nullable|string',
             'point_retrait' => 'required_if:mode_livraison,point_retrait|nullable|string',
-            'moyen_paiement' => 'required|in:flooz,tmoney,alphapay',
+            'moyen_paiement' => 'required|in:alphapay',
             'code_promo' => 'nullable|string',
         ]);
 
@@ -225,51 +224,6 @@ class OrderController extends Controller
         $order->load(['items.product.images', 'statusHistory.user']);
 
         return view('orders.show', compact('order'));
-    }
-
-    public function submitPaymentProof(Request $request, Order $order)
-    {
-        $this->authorizeOwner($order);
-
-        $data = $request->validate([
-            'transaction_id' => 'required|string|max:100',
-            'preuve_paiement' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
-        ]);
-
-        if ($order->preuve_paiement_path) {
-            Storage::disk('private')->delete($order->preuve_paiement_path);
-        }
-
-        try {
-            $path = $request->file('preuve_paiement')->store('payment-proofs', 'private');
-            if (! $path) {
-                throw new \RuntimeException('Stockage preuve paiement impossible.');
-            }
-        } catch (\Throwable $exception) {
-            Log::error('Preuve paiement non stockee.', [
-                'order_id' => $order->id,
-                'error' => $exception->getMessage(),
-            ]);
-
-            return back()->withInput()->withErrors(['preuve_paiement' => 'Upload impossible. Réessayez.']);
-        }
-        $order->update([
-            'transaction_id' => $data['transaction_id'],
-            'preuve_paiement_path' => $path,
-            'preuve_paiement_envoyee_at' => now(),
-        ]);
-        $order->load('user');
-        $this->notifyAdmins($order, 'preuve_paiement');
-        try {
-            $order->user->notify(new OrderUpdateNotification($order, 'preuve_paiement'));
-        } catch (\Throwable $exception) {
-            Log::error('Confirmation de preuve de paiement non envoyee.', [
-                'order_id' => $order->id,
-                'error' => $exception->getMessage(),
-            ]);
-        }
-
-        return back()->with('success', 'Preuve de paiement envoyée. Elle sera vérifiée par notre équipe.');
     }
 
     public function myOrders()

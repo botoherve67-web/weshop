@@ -89,12 +89,6 @@
                         <span class="history-dot"></span>
                         <div class="history-copy"><strong>Commande creee</strong><small>{{ $order->created_at->format('d/m/Y H:i') }}</small></div>
                     </div>
-                    @if($order->preuve_paiement_envoyee_at)
-                        <div class="history-item">
-                            <span class="history-dot"></span>
-                            <div class="history-copy"><strong>Preuve de paiement envoyee</strong><small>{{ $order->preuve_paiement_envoyee_at->format('d/m/Y H:i') }}</small></div>
-                        </div>
-                    @endif
                     @forelse($order->statusHistory->sortBy('created_at') as $history)
                         <div class="history-item">
                             <span class="history-dot"></span>
@@ -115,32 +109,11 @@
             <div class="order-panel">
                 <h2>Paiement</h2>
                 <div class="pay-box">
-                    @if($order->moyen_paiement === 'alphapay')
-                        Paiement AlphaPay<br>
-                    @else
-                    Flooz : +228 96 29 20 39<br>
-                    TMoney : +228 93 84 33 57<br>
-                    @endif
+                    Paiement AlphaPay<br>
                     Moyen choisi : {{ strtoupper($order->moyen_paiement) }}
                 </div>
-
-                @if($order->moyen_paiement === 'alphapay')
-                    @error('paiement')<p class="alert-error">{{ $message }}</p>@enderror
-                    <p>Confirmation automatique après paiement.</p>
-                @elseif($order->preuve_paiement_path)
-                    <p style="font-size:.72rem;">Preuve envoyee le {{ $order->preuve_paiement_envoyee_at?->format('d/m/Y H:i') }}<br>Transaction : <strong>{{ $order->transaction_id }}</strong></p>
-                @else
-                    <form action="{{ route('orders.payment-proof', $order) }}" method="POST" enctype="multipart/form-data" class="pay-form">
-                        @csrf
-                        <label for="transaction_id">Identifiant transaction</label>
-                        <input id="transaction_id" type="text" name="transaction_id" required maxlength="100" placeholder="Ex : TXN123456789">
-                        @error('transaction_id')<small class="alert-error" style="display:block;margin-top:5px;">{{ $message }}</small>@enderror
-                        <label for="preuve_paiement">Capture paiement</label>
-                        <input id="preuve_paiement" type="file" name="preuve_paiement" accept="image/jpeg,image/png,image/webp" required>
-                        @error('preuve_paiement')<small class="alert-error" style="display:block;margin-top:5px;">{{ $message }}</small>@enderror
-                        <button type="submit" class="btn" style="margin-top:12px;width:100%;">Envoyer preuve</button>
-                    </form>
-                @endif
+                @error('paiement')<p class="alert-error">{{ $message }}</p>@enderror
+                <p>Confirmation automatique après paiement.</p>
             </div>
 
             @if($order->type === 'precommande')

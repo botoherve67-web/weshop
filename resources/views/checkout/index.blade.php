@@ -52,18 +52,9 @@
         <label>Code promo (optionnel)</label>
         <input type="text" name="code_promo" placeholder="Code promo">
 
-        <label>Moyen de paiement</label>
-        <select name="moyen_paiement">
-            <option value="alphapay">AlphaPay — Mobile Money / carte</option>
-            <option value="flooz">Flooz (Moov Money)</option>
-            <option value="tmoney">TMoney (Togocom)</option>
-        </select>
-
-        <div class="alert-success">
-            Après validation, effectuez le paiement puis envoyez la capture et l'identifiant de transaction depuis le détail de votre commande.<br>
-            Flooz : <strong>+228 96 29 20 39</strong> — TMoney : <strong>+228 93 84 33 57</strong>
-        </div>
-
+        <label>Paiement</label>
+        <input type="hidden" name="moyen_paiement" value="alphapay">
+        <div class="alert-success">Paiement sécurisé AlphaPay par Mobile Money ou carte. Confirmation automatique après règlement.</div>
         <p style="text-align:right; font-size:1.2rem;"><strong>Total : {{ number_format($total, 0, ',', ' ') }} FCFA</strong></p>
 
         <button type="submit" class="btn" style="width:100%;">Confirmer la commande</button>

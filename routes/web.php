@@ -72,7 +72,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/commandes/{order}', [OrderController::class, 'show'])->name('orders.show');
     Route::get('/commandes/{order}/facture', [DocumentController::class, 'invoice'])->name('orders.invoice');
     Route::get('/commandes/{order}/recu', [DocumentController::class, 'receipt'])->name('orders.receipt');
-    Route::post('/commandes/{order}/preuve-paiement', [OrderController::class, 'submitPaymentProof'])->name('orders.payment-proof');
 
     Route::get('/mon-compte', [AccountController::class, 'dashboard'])->name('account.dashboard');
     Route::patch('/mon-compte', [AccountController::class, 'update'])->name('account.update');
